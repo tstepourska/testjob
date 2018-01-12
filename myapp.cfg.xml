@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch-config>
+    <!-- jndi-name to be used to lookup the batch application component  -->
+    <jndi-name>com.mycompany.myapp.main.Main</jndi-name>
+    <myapp>	
+	 
+	 <job id="OUT">
+      <step id="checkFileSize"            sequence="1" class="com.mycompany.myapp.step.CheckSize"/>
+      <step id="validateMessageRefId"     sequence="2" class="com.mycompany.myapp.step.AssignId"/>
+	  <step id="validateXML"              sequence="3" class="com.mycompany.myapp.step.ProcessXML"/>	  
+	  <step id="extractStats"         	  sequence="4" class="com.mycompany.myapp.step.CollectStatistics"/>
+    </job>
+	
+	<job id="OUT_data1">
+		<step id="checkFileSize"            sequence="1" class="com.mycompany.myapp.step.CheckSize"/>
+		<step id="generateMessageRefId"     sequence="2" class="com.mycompany.myapp.step.AssignId"/>
+	  	<step id="generateXML"              sequence="3" class="com.mycompany.myapp.step.ProcessXML"/>       
+       	<step id="createMapping"     	    sequence="4" class="com.mycompany.myapp.step.CreateMapping"/>
+      	<step id="extractStats"         	sequence="5" class="com.mycompany.myapp.step.CollectStatistics"/>
+    </job>
+
+    <job id="IN">
+      <step id="generateMessageRefId"     sequence="1" class="com.mycompany.myapp.step.AssignId"/>
+	  <step id="generateXML"              sequence="2" class="com.mycompany.myapp.step.ProcessXML"/>	  
+    </job>
+    
+     <job id="IN_data3">
+      <step id="generateMessageRefId"     sequence="1" class="com.mycompany.myapp.step.AssignId"/>
+	  <step id="generateXML"              sequence="2" class="com.mycompany.myapp.step.ProcessXML"/>	  
+    </job>
+    
+	 </myapp>
+	
+</batch-config>
